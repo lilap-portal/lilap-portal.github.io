@@ -1,0 +1,54 @@
+# Workflow para compilar y desplegar automáticamente en GitHub Pages con Vite
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    # Se dispara automáticamente al hacer push tanto a 'main' como a 'master'
+    branches: ['main', 'master']
+  # Permite también disparar el deploy manualmente desde la pestaña Actions de GitHub
+  workflow_dispatch:
+
+# Permisos requeridos por GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Permite solo un despliegue concurrente a la vez para evitar colisiones
+concurrency:
+  group: 'pages'
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instalar dependencias limpias
+        run: npm ci
+
+      - name: Compilar sitio con Vite
+        run: npm run build
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir artefacto compilado (dist)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Desplegar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
