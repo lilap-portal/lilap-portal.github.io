@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Case detail — Lilla P B2B Portal UX Audit</title>
+<!-- Fully self-contained: no external CDN or remote fonts. All styling
+     lives in report.css, which self-hosts the report's four typefaces
+     from ./fonts/. -->
+<link rel="stylesheet" href="report.css" />
+</head>
+<body class="blueprint-grid-sage min-h-screen">
+
+  <header class="no-print sticky top-0 z-30 bg-header backdrop-blur border-b border-salvia-border">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="font-hero text-2xl text-forest-ink hover:text-terracotta">Lilla P</a>
+        <span class="hidden sm:inline text-xs font-ui text-forest-muted border-l border-salvia-border pl-3">B2B Portal &middot; UX Audit</span>
+      </div>
+      <button onclick="window.print()" class="px-3 py-1.5 rounded-md text-xs font-ui font-semibold bg-terracotta text-white hover:bg-terracotta-hover transition-colors">
+        Print / Export PDF
+      </button>
+    </div>
+  </header>
+
+  <main id="caso-root" class="max-w-4xl mx-auto px-4 md:px-6 py-10 md:py-14">
+    <!-- Rendered by app.js -->
+  </main>
+
+  <footer class="no-print border-t border-salvia-border mt-16">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-8 flex flex-wrap items-center justify-between gap-3">
+      <span class="font-ui text-xs text-forest-muted">L&icirc;laby &mdash; UX &amp; Product Design</span>
+      <span class="font-ui text-xs text-forest-muted">Lilla P B2B Portal &middot; UX Audit &middot; test instance</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

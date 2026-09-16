@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lilla P B2B Portal — UX Audit Report</title>
+<!-- Fully self-contained: no external CDN or remote fonts. All styling
+     lives in report.css, which self-hosts the report's four typefaces
+     from ./fonts/. -->
+<link rel="stylesheet" href="report.css" />
+</head>
+<body class="blueprint-grid-sage min-h-screen">
+
+  <!-- Header -->
+  <header class="no-print sticky top-0 z-30 bg-header backdrop-blur border-b border-salvia-border">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="font-hero text-2xl text-forest-ink">Lilla P</span>
+        <span class="hidden sm:inline text-xs font-ui text-forest-muted border-l border-salvia-border pl-3">B2B Portal &middot; UX Audit</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="hidden md:inline-block px-3 py-1 rounded-full text-xs font-ui font-semibold bg-forest-ink text-white">In progress &middot; 8 cases complete</span>
+        <button onclick="window.print()" class="px-3 py-1.5 rounded-md text-xs font-ui font-semibold bg-terracotta text-white hover:bg-terracotta-hover transition-colors">
+          Print / Export PDF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-14">
+
+    <!-- Hero -->
+    <section class="mb-12">
+      <div class="text-xs font-ui font-semibold uppercase tracking-widest text-terracotta mb-3">UX Audit &middot; Chapter 01</div>
+      <h1 class="font-hero text-4xl sm:text-5xl md:text-6xl leading-hero text-forest-ink max-w-3xl">
+        A working diagnosis of the <em class="italic text-terracotta">B2B wholesale portal</em>
+      </h1>
+      <p class="font-reading text-lg text-forest-muted mt-5 max-w-2xl leading-relaxed">
+        An AI-assisted UX evaluation of Lilla P's B2B Portal test instance — guided by a UX Assessment Lead,
+        covering heuristic evaluation, key-journey walkthroughs, and responsive/accessibility spot checks.
+      </p>
+    </section>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-14">
+
+      <!-- About the audit -->
+      <div class="lg:col-span-2 bg-white border border-salvia-border rounded-lg p-6 md:p-8">
+        <h2 class="font-hero text-2xl text-forest-ink mb-4">About this audit</h2>
+        <p class="font-reading text-body leading-relaxed text-forest-ink mb-4">
+          The B2B Portal is already central to the daily work of Sales Reps, wholesale buyers, Sales Managers, and
+          admin users. Before introducing new functionality — and eventually building the broader Product Platform —
+          this audit builds a clear picture of how the current experience performs: where it creates friction, which
+          tasks require unnecessary effort, and what is already working well and should be preserved.
+        </p>
+        <p class="font-reading text-body leading-relaxed text-forest-ink mb-6">
+          The evaluation uses AI tools, guided throughout by a UX Assessment Lead who defines scope, directs each
+          case, and validates every finding, while AI accelerates navigation, evidence capture, comparison, and
+          synthesis.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="border border-salvia-border rounded-md p-4 bg-salvia-light">
+            <div class="font-ui text-xs font-semibold uppercase tracking-wide text-terracotta mb-1">Area 1</div>
+            <div class="font-ui text-sm font-semibold text-forest-ink mb-1">Targeted heuristic evaluation</div>
+            <p class="font-ui text-xs text-forest-muted leading-relaxed">Reviewed against a focused set of Nielsen's heuristics: consistency and standards, visibility of system status, error prevention, and error recovery.</p>
+          </div>
+          <div class="border border-salvia-border rounded-md p-4 bg-salvia-light">
+            <div class="font-ui text-xs font-semibold uppercase tracking-wide text-terracotta mb-1">Area 2</div>
+            <div class="font-ui text-sm font-semibold text-forest-ink mb-1">Key journeys &amp; cognitive walkthrough</div>
+            <p class="font-ui text-xs text-forest-muted leading-relaxed">A compact experience map of key journeys grouped by who performs them: Common, Buyer, Sales Rep, and Admin.</p>
+          </div>
+          <div class="border border-salvia-border rounded-md p-4 bg-salvia-light">
+            <div class="font-ui text-xs font-semibold uppercase tracking-wide text-terracotta mb-1">Area 3</div>
+            <div class="font-ui text-sm font-semibold text-forest-ink mb-1">Responsive &amp; accessibility spot checks</div>
+            <p class="font-ui text-xs text-forest-muted leading-relaxed">A targeted look at representative screen sizes and high-risk interface patterns — not a full responsive or WCAG conformance audit.</p>
+          </div>
+        </div>
+        <p class="font-ui text-xs text-forest-muted mt-6 italic">
+          Testing boundary: no financial transaction is ever completed, and "Submit Orders" is never clicked without explicit, case-by-case approval.
+        </p>
+      </div>
+
+      <!-- Executive summary -->
+      <div class="bg-forest-ink text-white rounded-lg p-6 md:p-7 flex flex-col">
+        <h2 class="font-hero text-2xl mb-1">Executive summary</h2>
+        <p class="font-ui text-xs text-dim mb-5">Real, computed totals across all completed cases</p>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div>
+            <div id="stat-case-count" class="font-hero text-4xl">0</div>
+            <div class="font-ui text-xs text-dim uppercase tracking-wide">Cases</div>
+          </div>
+          <div>
+            <div id="stat-finding-count" class="font-hero text-4xl">0</div>
+            <div class="font-ui text-xs text-dim uppercase tracking-wide">Findings</div>
+          </div>
+        </div>
+
+        <div class="space-y-3 mb-6">
+          <div>
+            <div class="flex items-center justify-between font-ui text-xs mb-1">
+              <span class="font-semibold">High</span>
+              <span id="stat-high-count" class="text-dim-strong">0</span>
+            </div>
+            <div class="severity-bar-track h-2 rounded-full bg-track border-track">
+              <div id="bar-high" class="h-2 rounded-full bg-terracotta" style="width:0%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between font-ui text-xs mb-1">
+              <span class="font-semibold">Medium</span>
+              <span id="stat-medium-count" class="text-dim-strong">0</span>
+            </div>
+            <div class="severity-bar-track h-2 rounded-full bg-track border-track">
+              <div id="bar-medium" class="h-2 rounded-full bg-amber-600" style="width:0%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between font-ui text-xs mb-1">
+              <span class="font-semibold">Low</span>
+              <span id="stat-low-count" class="text-dim-strong">0</span>
+            </div>
+            <div class="severity-bar-track h-2 rounded-full bg-track border-track">
+              <div id="bar-low" class="h-2 rounded-full bg-low" style="width:0%"></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="font-ui text-xs text-dim leading-relaxed mt-auto">
+          Scope: the B2B Portal test instance only. Severity is a coarse bucketing of each finding's own
+          priority note, kept verbatim on the finding's detail card.
+        </p>
+      </div>
+    </div>
+
+    <!-- Findings catalog -->
+    <section>
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-4">
+        <div>
+          <h2 class="font-hero text-3xl text-forest-ink">Cases &amp; findings catalog</h2>
+          <p id="catalog-count-label" class="font-ui text-sm text-forest-muted mt-1">Showing all findings</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 no-print">
+          <input id="search-input" type="text" placeholder="Search cases or findings&hellip;"
+            class="font-ui text-sm px-3 py-2 rounded-md border border-salvia-border bg-white focus-ring w-56" />
+          <div class="flex items-center gap-1">
+            <button data-severity-filter="All" class="px-2.5 py-1.5 rounded-md text-xs font-ui font-semibold bg-forest-ink text-white">All</button>
+            <button data-severity-filter="High" class="px-2.5 py-1.5 rounded-md text-xs font-ui font-semibold bg-white border border-salvia-border text-forest-ink hover:bg-salvia-card">High</button>
+            <button data-severity-filter="Medium" class="px-2.5 py-1.5 rounded-md text-xs font-ui font-semibold bg-white border border-salvia-border text-forest-ink hover:bg-salvia-card">Medium</button>
+            <button data-severity-filter="Low" class="px-2.5 py-1.5 rounded-md text-xs font-ui font-semibold bg-white border border-salvia-border text-forest-ink hover:bg-salvia-card">Low</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white border border-salvia-border rounded-lg overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-catalog">
+          <thead>
+            <tr class="border-b-2 border-salvia-border font-ui text-xs uppercase tracking-wide text-forest-muted">
+              <th class="py-3 pl-4 pr-2">Case</th>
+              <th class="py-3 pr-2" colspan="2">Title</th>
+              <th class="py-3 pr-2">Status</th>
+              <th class="py-3 pr-4">Findings</th>
+            </tr>
+          </thead>
+          <tbody id="catalog-body">
+            <!-- Rendered by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="no-print border-t border-salvia-border mt-16">
+    <div class="max-w-6xl mx-auto px-4 md:px-6 py-8 flex flex-wrap items-center justify-between gap-3">
+      <span class="font-ui text-xs text-forest-muted">L&icirc;laby &mdash; UX &amp; Product Design</span>
+      <span class="font-ui text-xs text-forest-muted">Lilla P B2B Portal &middot; UX Audit &middot; test instance</span>
+    </div>
+  </footer>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
